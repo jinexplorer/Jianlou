@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="#90FFFFFF"
+    android:gravity="bottom|center_horizontal" >
+
+    <TextView
+        android:id="@+id/publish_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dip"
+        android:clickable="true"
+        android:drawableTop="@mipmap/publish_goods"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/publish_item_margin"
+        android:text="发布闲置" />
+
+    <TextView
+        android:id="@+id/white1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dip"
+        android:layout_toRightOf="@+id/publish_goods"
+        android:clickable="true"
+        android:drawableTop="@mipmap/white"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/publish_item_margin"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/publish_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/white1"
+        android:clickable="true"
+        android:drawableTop="@mipmap/publish_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/publish_item_margin"
+        android:text="发帖子"/>
+
+    <ImageView
+        android:id="@+id/publish_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/white1"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/publish_goods"
+        android:src="@mipmap/tabbar_compose_background_icon_close" />
+
+</RelativeLayout>

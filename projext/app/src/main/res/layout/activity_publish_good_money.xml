@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".publish.PublishGoodMoney">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/PublishGoodMoney_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:padding="15dp"
+            android:src="@drawable/picture_back"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/PublishGoodMoney_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxEms="11"
+            android:text="价钱"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/PublishGoodMoney_publish"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="#F8F7F7"
+            android:textSize="15sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/key_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxEms="15"
+            android:text="价格    "
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/key_money"
+            android:src="@mipmap/rmb"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/PublishGoodMoney_1"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+
+            android:layout_toRightOf="@+id/key_money"
+            android:background="@null"
+            android:digits="1234567890."
+            android:ellipsize="end"
+            android:hint="0.00"
+            android:inputType="phone|number"
+            android:maxEms="15"
+            android:textColor="#474747"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_margin="1dp"
+        android:background="@android:color/darker_gray"  />
+
+
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/former_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxEms="15"
+            android:text="入手价"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/former_money"
+            android:src="@mipmap/rmb"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/PublishGoodMoney_2"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/former_money"
+            android:background="@null"
+            android:digits="1234567890."
+            android:ellipsize="end"
+            android:hint="0.00"
+            android:inputType="phone|number"
+            android:maxEms="15"
+            android:textColor="#474747"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_margin="1dp"
+        android:background="@android:color/darker_gray"  />
+
+
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/trans_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxEms="15"
+            android:text="运费    "
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:layout_toRightOf="@+id/trans_money"
+            android:src="@mipmap/rmb"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/PublishGoodMoney_3"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/trans_money"
+            android:background="@null"
+            android:digits="1234567890."
+            android:ellipsize="end"
+            android:hint="0.00"
+            android:inputType="phone|number"
+            android:maxEms="15"
+            android:textColor="#474747"
+            android:textSize="15sp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/PublishGoodMoney_send"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:text="包邮" />
+            <RadioButton
+                android:id="@+id/PublishGoodMoney_distance"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="按距离估算" />
+
+
+        </RadioGroup>
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_margin="1dp"
+        android:background="@android:color/darker_gray"  />
+    </LinearLayout>
