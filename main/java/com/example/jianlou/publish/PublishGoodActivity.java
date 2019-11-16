@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.jianlou.Internet.HttpUtil;
 import com.example.jianlou.R;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -30,11 +32,16 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.permissions.RxPermissions;
 import com.luck.picture.lib.tools.PictureFileUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PublishGoodActivity extends AppCompatActivity implements View.OnClickListener{
     private final static String TAG = PublishGoodActivity.class.getSimpleName();
@@ -57,6 +64,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
     private static final int PublishClassify=2;
     private String[] result1;
     private int num=0;
+    private String m1,m2,m3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,9 +198,10 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                     adapter.notifyDataSetChanged();
                     break;
                 case PublishmoneyNUM:
-                    String m1=data.getStringExtra("money1");
-                    String m2=data.getStringExtra("money2");
-                    String m3=data.getStringExtra("money3");
+                    m1=data.getStringExtra("money1");
+                    m2=data.getStringExtra("money2");
+                    m3=data.getStringExtra("money3");
+
                     m1=m1.equals("")?"0":m1;
                     m3=m3.equals("")?"0":m3;
                     money1.setTextColor(Color.rgb(0, 0, 0));
@@ -210,6 +219,9 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                         if(num>3){
                             more1.setTextSize(12);
                         }
+                        else {
+                            more1.setTextSize(15);
+                        }
                         more1.setTextColor(Color.rgb(0, 0, 0));
                         more1.setText(output);
                     }
@@ -222,18 +234,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.PublishGood_publish:
-                String publish_content = content.getText().toString().trim();
-                if (publish_content.length() == 0 && selectList.size()==0) {
-                    Toast.makeText(this, "必须填写物品书名或选择照片", Toast.LENGTH_SHORT).show();
-                }else if(money1.getText().toString().equals("0  运费(0)")||money1.getText().toString().equals("")){
-                    Toast.makeText(this, "必须填写一个价格", Toast.LENGTH_SHORT).show();
-                }else if(money1.getText().toString().equals("")){
-                    Toast.makeText(this, "请至少选择一个分类", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(this, "发布成功,程序员在加班加点制作之后界面中！", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+                PublishGood_publish();
                 break;
             case R.id.PublishGood_back:
                 Intent intent=new Intent();
@@ -255,6 +256,60 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                 }
                 startActivityForResult(intent2,PublishClassify);
                 break;
+        }
+    }
+
+    public void PublishGood_publish(){
+        String publish_content = content.getText().toString().trim();
+        if (publish_content.length() == 0 && selectList.size()==0) {
+            Toast.makeText(this, "必须填写物品书名或选择照片", Toast.LENGTH_SHORT).show();
+        }else if(money1.getText().toString().equals("0  运费(0)")||money1.getText().toString().equals("")){
+            Toast.makeText(this, "必须填写一个价格", Toast.LENGTH_SHORT).show();
+        }else if(more1.getText().toString().equals("")){
+            Toast.makeText(this, "请至少选择一个分类", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            RequestBody requestBody=new FormBody.Builder()
+                    .add("id","15927517010")
+                    .add("content",content.getText().toString())
+                    .add("money",m1)
+                    .add("origin_money",m2)
+                    .add("send_money",m3)
+                    .add("more",more1.getText().toString())
+                    .build();
+            HttpUtil.sendOkHttpRequest("http://10.131.39.64/api/publish.php",requestBody,new okhttp3.Callback(){
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Looper.prepare();
+                    Toast.makeText(PublishGoodActivity.this,"请求失败",Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.code() == 200) {
+                        String responseData=response.body().string();
+                        if(responseData.equals("insert success")){
+                            Looper.prepare();
+                            Toast.makeText(PublishGoodActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+                        else if(responseData.equals("insert failed")){
+                            Looper.prepare();
+                            Toast.makeText(PublishGoodActivity.this, "商品重复", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+                        else {
+                            Looper.prepare();
+                            Toast.makeText(PublishGoodActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+
+                    }
+                }
+
+            });
+            finish();
         }
     }
 
