@@ -18,9 +18,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 
+import com.example.jianlou.Login.Login;
 import com.example.jianlou.R;
 
 public class Publish extends PopupWindow implements View.OnClickListener {
@@ -173,7 +173,8 @@ public class Publish extends PopupWindow implements View.OnClickListener {
                 }
                 break;
             case R.id.publish_content:
-                Toast.makeText(mContext, "莫挨老子", Toast.LENGTH_SHORT).show();
+                Intent intent1=new Intent(mContext, Login.class);
+                mContext.startActivity(intent1);
                 break;
             case R.id.publish_close:
                 if (isShowing()) {

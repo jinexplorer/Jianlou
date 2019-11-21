@@ -37,6 +37,7 @@ Language: Java
 | 2019-11-15 | 完成发布的模仿咸鱼的界面。实现九宫格和访问相册，相机|
 | 2019-11-16 | 完成APP与服务器端的数据交互                     |
 | 2019-11-20 | 优化代码结构，进行详细的注释，去除不必要的文件     |
+| 2019-11-21 | 完成登录注册界面的布局和代码逻辑，新增开机logo    |
 
 > **项目成员**
 
@@ -45,9 +46,21 @@ Language: Java
 [李易](#)
 [吴嘉诚](#)
 
+> **项目demo**
+
+[捡喽.apk](./APP/捡喽.apk)
+
+> **预览图片**
+
+![](./image/start.jpg)
+![](./image/index.jpg)
+![](./image/publish.jpg)
+![](./image/publish_good.jpg)
+![](./image/login.jpg)
+
 > **声明**
 
-本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。一切责任概不负责
+本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。感谢各位网友朋友的开源分享，一切责任概不负责
 
 > **参考链接**
 
@@ -66,3 +79,11 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 发布界面九宫格以及访问相册：[LuckSiege/PictureSelector: Picture Selector Library for Android  or 多图片选择器](https://github.com/LuckSiege/PictureSelector)
 
 发布界面分类选择界面多选器：[ahuyangdong/SelectCustom: Android实现自由单选、复选按钮效果+样式美化](https://github.com/ahuyangdong/SelectCustom)
+
+启动/登录logo： [腾讯QQ](https://im.qq.com/pcqq/)
+
+启动计时： [qianhezheng/LaunchAd: Android广告启动页](https://github.com/qianhezheng/LaunchAd)
+
+启动布局： [ladingwu/Splash: Android 启动页动画demo](https://github.com/ladingwu/Splash)
+
+登陆注册： [wenzhihao123/Android-loginsmooth-master: android 登录页面平滑动画，监听键盘弹起与收起](https://github.com/wenzhihao123/Android-loginsmooth-master)

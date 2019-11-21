@@ -268,8 +268,8 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
     public void PublishGood_publish(){
         //获取content，逐步进行非空判断
         String publish_content = content.getText().toString().trim();
-        if (publish_content.length() == 0 && selectList.size()==0) {
-            Toast.makeText(this, "必须填写物品书名或选择照片", Toast.LENGTH_SHORT).show();
+        if (publish_content.length() == 0 || selectList.size()==0) {
+            Toast.makeText(this, "必须填写物品书名和选择照片", Toast.LENGTH_SHORT).show();
         }else if(money1.getText().toString().equals("0  运费(0)")||money1.getText().toString().equals("")){
             Toast.makeText(this, "必须填写一个价格", Toast.LENGTH_SHORT).show();
         }else if(more1.getText().toString().equals("")){

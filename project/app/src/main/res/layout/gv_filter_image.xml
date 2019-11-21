@@ -44,7 +44,6 @@
             android:text="@string/time"
             android:textColor="@color/white"
             android:textSize="11sp"
-            android:visibility="gone"
-             />
+            android:visibility="gone"/>
     </RelativeLayout>
 </RelativeLayout>

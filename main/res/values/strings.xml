@@ -37,4 +37,15 @@
     <string name="fabuxianzhi">发布闲置</string>
     <string name="fatiezi">发帖子</string>
     <string name="time">00:00</string>
+    <string name="hint_login_username">请输入手机号码</string>
+    <string name="hint_login_password">输入密码</string>
+    <string name="login">登录</string>
+    <string name="login_forget_pwd">忘记密码</string>
+    <string name="please_input_limit_pwd">请输入数字或字母</string>
+    <string name="zhucexinyonghu">注册新用户</string>
+    <string name="lianxikefu">联系客服</string>
+    <string name="aboutus">关于我们</string>
+    <string name="register">注册</string>
+    <string name="hint_login_password_again">再次输入密码</string>
+    <string name="account_have">已有账号？点我登录</string>
 </resources>

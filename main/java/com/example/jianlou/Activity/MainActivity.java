@@ -4,17 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
+import com.example.jianlou.Login.Login;
 import com.example.jianlou.R;
 import com.example.jianlou.Fragment.SheQuFragment;
 import com.example.jianlou.Fragment.ShouYeFragment;
 import com.example.jianlou.Fragment.WoDeFragment;
 import com.example.jianlou.Fragment.XiaoXiFragment;
 import com.example.jianlou.publish.publish.Publish;
+import com.example.jianlou.staticVar.StaticVar;
+import com.luck.picture.lib.config.PictureConfig;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int LOGIN=1;
+    private RadioGroup radioGroup;
 
     private FragmentTransaction mTransaction;
 
@@ -26,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 四个Fragments，定义一些常量。
      */
-    Fragment syFragemnt, sqFragment, xxFragment, wdFragment;
+    Fragment syFragment, sqFragment, xxFragment, wdFragment;
     public static final int VIEW_SHOUYE_INDEX = 0;
     public static final int VIEW_SHEQU_INDEX = 1;
     public static final int VIEW_XIAOXI_INDEX = 2;
     public static final int VIEW_WODE_INDEX = 3;
     private int temp_position_index = -1;
-
+    private int VIEW_LAST_INDEX=0;
 
     /**
      * 每个activity创建的时候都要执行的方法
@@ -47,15 +56,14 @@ public class MainActivity extends AppCompatActivity {
      * 执行完onCreate执行的方法，用来将属性和layput绑定。
      */
     private void initView() {
+        radioGroup=findViewById(R.id.id_navcontent);
         //绑定四个单选框
-        syFragemnt = ShouYeFragment.getNewInstance();
+        syFragment = ShouYeFragment.getNewInstance();
         sqFragment = SheQuFragment.getNewInstance();
         xxFragment = XiaoXiFragment.getNewInstance();
         wdFragment = WoDeFragment.getNewInstance();
         //初始化选择，并选择首页作为默认选项
-        mTransaction = getSupportFragmentManager().beginTransaction();
-        mTransaction.replace(R.id.id_fragment_content, syFragemnt);
-        mTransaction.commit();
+        transview(syFragment,VIEW_SHOUYE_INDEX);
     }
 
     /**
@@ -64,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void switchView(View view) {
         switch (view.getId()) {
             case R.id.id_nav_btshouye:
-                    transview(syFragemnt,VIEW_SHEQU_INDEX);
+                    transview(syFragment,VIEW_SHOUYE_INDEX);
                 break;
             case R.id.id_nav_btshequ:
                     transview( sqFragment,VIEW_SHEQU_INDEX);
@@ -90,12 +98,60 @@ public class MainActivity extends AppCompatActivity {
      * nowindex:当前选择的下标
      * choose：选择替换的framment
      */
-    public void transview(Fragment choose,int nowindex){
+    private void transview(Fragment choose,int nowindex){
         if(temp_position_index!=nowindex){
+            VIEW_LAST_INDEX=temp_position_index;
             mTransaction = getSupportFragmentManager().beginTransaction();
             mTransaction.replace(R.id.id_fragment_content, choose);
             mTransaction.commit();
             temp_position_index=nowindex;
         }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case LOGIN:
+                    StaticVar.isLogin =true;
+            }
+        }else if(resultCode==RESULT_CANCELED){
+            switch (requestCode){
+                case LOGIN:
+                    radioGroup.check(getID(VIEW_LAST_INDEX));
+                    transview( getFragment(VIEW_LAST_INDEX),VIEW_LAST_INDEX);
+            }
+        }
+    }
+
+    private Fragment getFragment(int nowindex){
+        switch (nowindex){
+            case VIEW_SHOUYE_INDEX:
+                return syFragment;
+            case VIEW_SHEQU_INDEX:
+                return sqFragment;
+            case VIEW_XIAOXI_INDEX:
+                return xxFragment;
+            case VIEW_WODE_INDEX:
+                return wdFragment;
+        }
+        return null;
+    }
+    private int getID(int nowindex){
+        switch (nowindex){
+            case VIEW_SHOUYE_INDEX:
+                return R.id.id_nav_btshouye;
+            case VIEW_SHEQU_INDEX:
+                return R.id.id_nav_btshequ;
+            case VIEW_XIAOXI_INDEX:
+                return R.id.id_nav_btxiaoxi;
+            case VIEW_WODE_INDEX:
+                return R.id.id_nav_btwode;
+        }
+        return R.id.id_nav_btshouye;
     }
 }
