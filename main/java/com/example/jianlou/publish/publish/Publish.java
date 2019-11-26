@@ -18,10 +18,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
+import com.example.jianlou.Activity.MainActivity;
 import com.example.jianlou.Login.Login;
 import com.example.jianlou.R;
+import com.example.jianlou.staticVar.StaticVar;
+
+import java.util.Objects;
 
 public class Publish extends PopupWindow implements View.OnClickListener {
 
@@ -165,6 +170,7 @@ public class Publish extends PopupWindow implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.publish_goods:
                 //进入发布活动界面
+
                 Intent intent = new Intent("com.example.jianlou.PublishGoodActivity");
                 mContext.startActivity(intent);
                 //先关闭了再说，避免返回的时候再回来
@@ -173,8 +179,7 @@ public class Publish extends PopupWindow implements View.OnClickListener {
                 }
                 break;
             case R.id.publish_content:
-                Intent intent1=new Intent(mContext, Login.class);
-                mContext.startActivity(intent1);
+                Toast.makeText(mContext,"待开发",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.publish_close:
                 if (isShowing()) {

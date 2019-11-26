@@ -30,6 +30,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -45,4 +48,8 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
     //网络所需模块
     implementation "com.squareup.okhttp3:okhttp:3.10.0"
+    //头像模块
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //设置模块
+    implementation 'com.leon:lsettingviewlibrary:1.7.0'
 }

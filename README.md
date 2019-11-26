@@ -30,14 +30,16 @@ Language: Java
 > **项目进展**
 
 | 时间        | 完成情况                                       |
-| :----------|:----------------------------------------------|
-| 2019-10-24 | 完成小组成员的组建，基本确定各个成员的分工          |
-| 2019-10-31 | 完成项目工程的创建，同时完成底部导航栏             |
-| 2019-11-07 | 完成发布项目的模仿微博菜单弹出的动画。				|
-| 2019-11-15 | 完成发布的模仿咸鱼的界面。实现九宫格和访问相册，相机|
-| 2019-11-16 | 完成APP与服务器端的数据交互                     |
-| 2019-11-20 | 优化代码结构，进行详细的注释，去除不必要的文件     |
-| 2019-11-21 | 完成登录注册界面的布局和代码逻辑，新增开机logo    |
+| :----------|:------------------------------------------------|
+| 2019-10-24 | 完成小组成员的组建，基本确定各个成员的分工           |
+| 2019-10-31 | 完成项目工程的创建，同时完成底部导航栏               |
+| 2019-11-07 | 完成发布项目的模仿微博菜单弹出的动画。				   |
+| 2019-11-15 | 完成发布的模仿咸鱼的界面。实现九宫格和访问相册，相机   |
+| 2019-11-16 | 完成APP与服务器端的数据交互                        |
+| 2019-11-20 | 优化代码结构，进行详细的注释，去除不必要的文件        |
+| 2019-11-21 | 完成登录注册界面的布局和代码逻辑，新增开机logo       |
+| 2019-11-26 | 完成自动登录功能，加入主页搜索界面,更换主题颜色为蓝色 |
+| 2019-11-26 | 完成个人界面的设置，暂时可以修改昵称                |
 
 > **项目成员**
 
@@ -52,12 +54,15 @@ Language: Java
 
 > **预览图片**
 
-![](./image/start.jpg)
-![](./image/index.jpg)
-![](./image/publish.jpg)
-![](./image/publish_good.jpg)
-![](./image/login.jpg)
-
+![启动](./image/start.jpg)
+![主页](./image/index.jpg)
+![发布](./image/publish.jpg)
+![发布商品](./image/publish_good.jpg)
+![登录](./image/login.jpg)
+![个人](./image/my.jpg)
+![设置](./image/setting.png)
+![个人资料](./image/setting_person.png)
+![编辑昵称](./image/edit_name.jpg)
 > **声明**
 
 本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。感谢各位网友朋友的开源分享，一切责任概不负责
@@ -87,3 +92,11 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 启动布局： [ladingwu/Splash: Android 启动页动画demo](https://github.com/ladingwu/Splash)
 
 登陆注册： [wenzhihao123/Android-loginsmooth-master: android 登录页面平滑动画，监听键盘弹起与收起](https://github.com/wenzhihao123/Android-loginsmooth-master)
+
+首页搜索样式：[yetwish/CustomSearchView: customer search view](https://github.com/yetwish/CustomSearchView)
+
+头像： [square/picasso: A powerful image downloading and caching library for Android](https://github.com/square/picasso)
+
+头像图片： [SheHuan/NiceImageView: Android 圆角、圆形 ImageView](https://github.com/SheHuan/NiceImageView)
+
+圆形头像及设置界面： [leonHua/LSettingView: 非常常用的设置界面条目 very useful setting item](https://github.com/leonHua/LSettingView)

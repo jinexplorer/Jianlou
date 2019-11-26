@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是我的" />
+        android:background="@color/colorPrimaryDark">
+        <ImageView
+            android:layout_width="80dp"
+            android:id="@+id/photo"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/photo"
+            android:text="1xxxxxxxxxx"
+            android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/username"
+            android:src="@mipmap/setting"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="55dp"
+            android:layout_toEndOf="@id/photo"
+            android:text="昵称："
+            android:textSize="17sp" />
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="55dp"
+            android:layout_toEndOf="@id/photo"
+            android:text="捡喽用户1xxxxxxxxxx"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
 </LinearLayout>

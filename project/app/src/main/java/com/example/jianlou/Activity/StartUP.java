@@ -12,7 +12,9 @@ import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
-
+/**
+ * APP启动的时候的3s加载页面
+ */
 public class StartUP extends AppCompatActivity implements View.OnClickListener {
 
     private TextView ad_time_tv;

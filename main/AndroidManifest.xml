@@ -18,13 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.StartUP">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".my.EditName"></activity>
+        <activity android:name=".my.SettingPerson" />
+        <activity android:name=".my.Setting" /> <!-- 登录活动 -->
+        <activity android:name=".Activity.StartUP" />
         <activity android:name=".Login.Register" />
         <activity android:name=".Login.Login" />
 
@@ -32,7 +29,11 @@
             android:name="android.max_aspect"
             android:value="2.1" /> <!-- 主活动 -->
         <activity android:name=".Activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- 发布活动 -->
         <activity android:name=".publish.publishGood.PublishGoodClassification" />
         <activity android:name=".publish.publishGood.PublishGoodMoney" />

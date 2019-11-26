@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:leon="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_eeeeee"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/setting_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:src="@drawable/picture_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.leon.lib.settingview.LSettingItem
+            android:id="@+id/setting_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            leon:leftText="个人资料设置" />
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="收货地址" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="社区设置" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="黑名单" />
+
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            leon:leftText="全局自动回复设置" />
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="图片质量设置" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="自动播放视频设置" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="语音通话设置" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="隐私" />
+
+
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            leon:leftText="关于捡喽" />
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="把捡喽分享给好友" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="捡喽社区公约" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="安全中心" />
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            leon:leftText="清除缓存" />
+
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="我的二维码" />
+        <com.leon.lib.settingview.LSettingItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            leon:leftText="退出关闭应用" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/setting_missLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="退出登录"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@color/myred" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+</LinearLayout>

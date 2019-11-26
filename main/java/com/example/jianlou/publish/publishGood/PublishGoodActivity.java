@@ -15,7 +15,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.jianlou.Activity.MainActivity;
 import com.example.jianlou.Internet.HttpUtil;
+import com.example.jianlou.Login.Login;
 import com.example.jianlou.R;
 import com.example.jianlou.staticVar.PublishTable;
 import com.example.jianlou.staticVar.StaticVar;
@@ -27,6 +30,7 @@ import com.luck.picture.lib.permissions.RxPermissions;
 import com.luck.picture.lib.tools.PictureFileUtils;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -47,7 +51,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
     //最大允许选择的图片数
     private int maxSelectNum = 9;
     //发布界面的money和more的右边
-    private TextView money1,more1;
+    private TextView money1,classify;
     //发布界面的明文
     private EditText content;
     //相册界面的主题，配置
@@ -56,8 +60,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
     private int statusBarColorPrimaryDark;
     private int upResId, downResId;
     //money和more活动的启动标志
-    private static final int PublishmoneyNUM=1;
-    private static final int PublishClassify=2;
+
     //从more活动的返回值，因为要用于来回交互，所以为全局变量。包含返回的String数组
     private String[] result1;
     //从money活动返回的三个数据
@@ -66,6 +69,11 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(StaticVar.isLogin){
+        }else{
+            Intent intent=new Intent(PublishGoodActivity.this, Login.class);
+            startActivityForResult(intent, StaticVar.LOGIN);
+        }
         setContentView(R.layout.activity_publish_good);
         init();
     }
@@ -82,7 +90,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
 
         content=findViewById(R.id.PublishGood_content);
         money1=findViewById(R.id.Publishmoney_1);
-        more1=findViewById(R.id.Publishmore_1);
+        classify=findViewById(R.id.Publishmore_1);
         //设置点击监听
         publishGood_back.setOnClickListener(this);
         publish.setOnClickListener(this);
@@ -208,14 +216,14 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.Publishmoney:
                 Intent intent1=new Intent(PublishGoodActivity.this, PublishGoodMoney.class);
-                startActivityForResult(intent1,PublishmoneyNUM);
+                startActivityForResult(intent1,StaticVar.PublishmoneyNUM);
                 break;
             case R.id.Publishmore:
                 Intent intent2=new Intent(PublishGoodActivity.this, PublishGoodClassification.class);
                 if(result1!=null){
                     intent2.putExtra("more",result1);
                 }
-                startActivityForResult(intent2,PublishClassify);
+                startActivityForResult(intent2,StaticVar.PublishClassify);
                 break;
         }
     }
@@ -232,7 +240,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                     adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
                     break;
-                case PublishmoneyNUM:
+                case StaticVar.PublishmoneyNUM:
                     m1=data.getStringExtra("money1");
                     m2=data.getStringExtra("money2");
                     m3=data.getStringExtra("money3");
@@ -243,7 +251,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                     String result=m1+"  运费("+m3+")";
                     money1.setText(result);
                     break;
-                case PublishClassify:
+                case StaticVar.PublishClassify:
                     result1 = data.getStringArrayExtra("more");
                     if(result1!=null) {
                         StringBuilder output = new StringBuilder();
@@ -252,13 +260,21 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                         }
                         output.append(result1[result1.length-1]);
                         int font=result1.length-1>3?12:15;
-                        more1.setTextSize(font);
-                        more1.setTextColor(Color.rgb(0, 0, 0));
-                        more1.setText(output.toString());
+                        classify.setTextSize(font);
+                        classify.setTextColor(Color.rgb(0, 0, 0));
+                        classify.setText(output.toString());
                     }
                     break;
+                case StaticVar.LOGIN:
+                    StaticVar.isLogin =true;
                 default:
                     break;
+            }
+        }
+        else if(resultCode==RESULT_CANCELED){
+            switch (requestCode){
+                case StaticVar.LOGIN:
+                    finish();
             }
         }
     }
@@ -272,18 +288,19 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(this, "必须填写物品书名和选择照片", Toast.LENGTH_SHORT).show();
         }else if(money1.getText().toString().equals("0  运费(0)")||money1.getText().toString().equals("")){
             Toast.makeText(this, "必须填写一个价格", Toast.LENGTH_SHORT).show();
-        }else if(more1.getText().toString().equals("")){
+        }else if(classify.getText().toString().equals("")){
             Toast.makeText(this, "请至少选择一个分类", Toast.LENGTH_SHORT).show();
         }
         else {
             //调用网络线程，发送数据搭配远程服务器
             RequestBody requestBody=new FormBody.Builder()
-                    .add(PublishTable.id,"15927517010")
+                    .add(PublishTable.userID,StaticVar.username)
                     .add(PublishTable.content,content.getText().toString())
                     .add(PublishTable.money,m1)
                     .add(PublishTable.origin_money,m2)
                     .add(PublishTable.send_money,m3)
-                    .add(PublishTable.more,more1.getText().toString())
+                    .add(PublishTable.classify,classify.getText().toString())
+                    .add(PublishTable.time, String.valueOf(new Date()))
                     .build();
             HttpUtil.sendOkHttpRequest(StaticVar.publishUrl,requestBody,new okhttp3.Callback(){
                 @Override
@@ -305,7 +322,11 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                                 break;
                             default:
                                 outputMessage("未知错误");
-                        }}}}});
+                        }}}
+                else {
+                        outputMessage("服务器故障");
+                }
+                }});
             finish();
         }
     }
