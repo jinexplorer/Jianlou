@@ -69,13 +69,13 @@ public class Publish extends PopupWindow implements View.OnClickListener {
         if (null == overlay) {
             View view = mContext.getWindow().getDecorView();
             view.setDrawingCacheEnabled(true);
-            view.buildDrawingCache(true);
+             view.buildDrawingCache(true);
             Bitmap mBitmap = view.getDrawingCache();
-            float scaleFactor = 8;
+            float scaleFactor = 100;
             float radius = 10;
             int width = mBitmap.getWidth();
             int height = mBitmap.getHeight();
-            overlay = Bitmap.createBitmap((int) (width / scaleFactor), (int) (height / scaleFactor), Bitmap.Config.ARGB_8888);
+            overlay = Bitmap.createBitmap((int) (width / scaleFactor),(int) (height / scaleFactor), Bitmap.Config.RGB_565);
             Canvas canvas = new Canvas(overlay);
             canvas.scale(1 / scaleFactor, 1 / scaleFactor);
             Paint paint = new Paint();
@@ -97,7 +97,7 @@ public class Publish extends PopupWindow implements View.OnClickListener {
         close.setOnClickListener(this);
         //显示layout
         showAnimation(layout);
-        setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), blur()));
+        setBackgroundDrawable(new BitmapDrawable(mContext.getResources(),blur()));
         setOutsideTouchable(true);
         setFocusable(true);
         showAtLocation(anchor, Gravity.BOTTOM, 0, statusBarHeight);

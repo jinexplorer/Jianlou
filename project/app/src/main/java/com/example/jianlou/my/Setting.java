@@ -13,7 +13,9 @@ import com.example.jianlou.Activity.MainActivity;
 import com.example.jianlou.R;
 import com.example.jianlou.staticVar.StaticVar;
 import com.leon.lib.settingview.LSettingItem;
-
+/**
+ * 我的界面中的哪个右上角的设置的活动，活动就是很简单的监听响应
+ */
 public class Setting extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

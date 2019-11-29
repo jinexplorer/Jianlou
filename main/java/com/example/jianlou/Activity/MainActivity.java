@@ -11,10 +11,10 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.example.jianlou.R;
-import com.example.jianlou.Fragment.SheQuFragment;
-import com.example.jianlou.Fragment.ShouYeFragment;
+import com.example.jianlou.shequ.SheQuFragment;
+import com.example.jianlou.index.ShouYeFragment;
 import com.example.jianlou.my.WoDeFragment;
-import com.example.jianlou.Fragment.XiaoXiFragment;
+import com.example.jianlou.message.XiaoXiFragment;
 import com.example.jianlou.publish.publish.Publish;
 import com.example.jianlou.staticVar.StaticVar;
 

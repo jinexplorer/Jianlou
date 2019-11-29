@@ -7,8 +7,6 @@
     android:orientation="vertical"
     tools:context=".publish.publishGood.PublishGoodActivity">
 
-
-
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
@@ -21,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:padding="15dp"
-            android:src="@drawable/picture_back"/>
+            android:src="@drawable/picture_back" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -43,137 +41,147 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-
-    <EditText
-        android:id="@+id/PublishGood_content"
+    <com.example.jianlou.view.MyScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@android:color/transparent"
-        android:gravity="start"
-        android:textSize="15sp"
-        android:hint="品牌型号，新旧程度，入手渠道，转手原因..."
-        android:lines="7"
-        android:textColor="#474747"
-        android:textColorHint="#C6C6C6" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/PublishGood_addPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:overScrollMode="never"
-        />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@color/white"/>
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@android:color/darker_gray"  />
-
-    <RelativeLayout
-        android:layout_marginLeft="10dp"
-        android:id="@+id/Publishmoney"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:layout_margin="5dp">
-
-        <ImageView
-            android:id="@+id/money"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:background="@color/transparent"
-            android:padding="2dp"
-            android:src="@mipmap/money"
-            android:visibility="visible" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:ellipsize="end"
-            android:maxEms="15"
-            android:text="价格"
-            android:layout_toRightOf="@+id/money"
-            android:layout_marginLeft="10dp"
-            android:textColor="#000000"
-            android:textSize="15sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Publishmoney_1"
-            android:layout_width="277dp"
-            android:layout_height="45dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="right"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="10dp"
-            android:hint="开个价 >"
-            android:textColor="#F8F7F7"
-            android:textSize="15sp" />
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/PublishGood_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="start"
+                android:hint="品牌型号，新旧程度，入手渠道，转手原因..."
+                android:lines="7"
+                android:textColor="#474747"
+                android:textColorHint="#C6C6C6"
+                android:textSize="15sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/PublishGood_addPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:overScrollMode="never" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@color/white" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:id="@+id/Publishmoney"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@color/transparent"
+                    android:padding="2dp"
+                    android:src="@mipmap/money"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/money"
+                    android:ellipsize="end"
+                    android:maxEms="15"
+                    android:text="价格"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/Publishmoney_1"
+                    android:layout_width="277dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical|right"
+                    android:hint="开个价 >"
+                    android:textColor="#F8F7F7"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
 
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/darker_gray" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@android:color/darker_gray"  />
 
+            <RelativeLayout
+                android:id="@+id/Publishmore"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white">
 
-    <RelativeLayout
-        android:id="@+id/Publishmore"
-        android:layout_marginLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:layout_margin="5dp">
+                <ImageView
+                    android:id="@+id/more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@color/transparent"
+                    android:padding="2dp"
+                    android:src="@mipmap/moremessage"
+                    android:visibility="visible" />
 
-        <ImageView
-            android:id="@+id/more"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:background="@color/transparent"
-            android:padding="2dp"
-            android:src="@mipmap/moremessage"
-            android:visibility="visible" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/more"
+                    android:ellipsize="end"
+                    android:maxEms="15"
+                    android:text="分类"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:ellipsize="end"
-            android:maxEms="15"
-            android:text="分类"
-            android:layout_toRightOf="@+id/more"
-            android:layout_marginLeft="10dp"
-            android:textColor="#000000"
-            android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/Publishmore_1"
+                    android:layout_width="278dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical|right"
+                    android:hint="选择分类 >"
+                    android:textColor="#F8F7F7"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/Publishmore_1"
-            android:layout_width="278dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical|right"
-            android:layout_marginRight="10dp"
-            android:hint="选择分类 >"
-            android:textColor="#F8F7F7"
-            android:textSize="15sp" />
-    </RelativeLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_margin="1dp"
+                android:background="@android:color/darker_gray" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:layout_margin="1dp"
-        android:background="@android:color/darker_gray"  />
+        </LinearLayout>
+    </com.example.jianlou.view.MyScrollView>
 </LinearLayout>

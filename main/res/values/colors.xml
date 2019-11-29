@@ -10,7 +10,7 @@
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>
-    <color name="blue">#7D7DFF</color>
+    <color name="blue">#0000ff</color>
     <color name="color_fa">#fafafa</color>
     <color name="divider">#B6B6B6</color>
 
@@ -29,5 +29,4 @@
     <color name="color_white">#ffffff</color>
     <color name="btn_press_color">#5677fc</color>
     <color name="btn_pressed_color">#3ca0ec</color>
-	
 </resources>

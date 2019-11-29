@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ImageTranslucentTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- 设置 statusBarColor 为透明 -->
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+</resources>

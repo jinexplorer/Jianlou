@@ -16,11 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jianlou.Activity.MainActivity;
 import com.example.jianlou.Internet.HttpUtil;
 import com.example.jianlou.Login.Login;
 import com.example.jianlou.R;
-import com.example.jianlou.staticVar.PublishTable;
+import com.example.jianlou.staticVar.Table;
 import com.example.jianlou.staticVar.StaticVar;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -294,13 +293,13 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
         else {
             //调用网络线程，发送数据搭配远程服务器
             RequestBody requestBody=new FormBody.Builder()
-                    .add(PublishTable.userID,StaticVar.username)
-                    .add(PublishTable.content,content.getText().toString())
-                    .add(PublishTable.money,m1)
-                    .add(PublishTable.origin_money,m2)
-                    .add(PublishTable.send_money,m3)
-                    .add(PublishTable.classify,classify.getText().toString())
-                    .add(PublishTable.time, String.valueOf(new Date()))
+                    .add(Table.userID,StaticVar.username)
+                    .add(Table.content,content.getText().toString())
+                    .add(Table.money,m1)
+                    .add(Table.origin_money,m2)
+                    .add(Table.send_money,m3)
+                    .add(Table.classify,classify.getText().toString())
+                    .add(Table.time, String.valueOf(new Date()))
                     .build();
             HttpUtil.sendOkHttpRequest(StaticVar.publishUrl,requestBody,new okhttp3.Callback(){
                 @Override

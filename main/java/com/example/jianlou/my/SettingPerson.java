@@ -11,7 +11,9 @@ import com.example.jianlou.R;
 import com.example.jianlou.staticVar.StaticVar;
 import com.leon.lib.settingview.LSettingItem;
 import com.squareup.picasso.Picasso;
-
+/**
+ * 设置界面第一个修改个人信息的的活动，活动就是很简单的监听响应
+ */
 public class SettingPerson extends AppCompatActivity implements View.OnClickListener {
     private LSettingItem username,user_name;
     ImageView back,photo;

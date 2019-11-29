@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.jianlou.Internet.HttpUtil;
 import com.example.jianlou.R;
-import com.example.jianlou.staticVar.PublishTable;
+import com.example.jianlou.staticVar.Table;
 import com.example.jianlou.staticVar.StaticVar;
 
 import java.io.IOException;
@@ -154,8 +154,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(Login.this,"请填写正确的手机号",Toast.LENGTH_SHORT).show();
         }else{
             RequestBody requestBody=new FormBody.Builder()
-                    .add(PublishTable.username,phoneNumber)
-                    .add(PublishTable.password,pwd)
+                    .add(Table.username,phoneNumber)
+                    .add(Table.password,pwd)
                     .build();
             HttpUtil.sendOkHttpRequest(StaticVar.userUrl,requestBody, new okhttp3.Callback() {
                 @Override

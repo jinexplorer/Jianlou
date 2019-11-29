@@ -11,7 +11,7 @@
 
 > **项目简介**
 
-软件工程大作业，一款面向大学生群体的二手交易平台App。
+软件工程大作业，一款面向大学生群体的二手交易平台App，就是模仿咸鱼。
 
 > **开发环境**
 
@@ -40,12 +40,16 @@ Language: Java
 | 2019-11-21 | 完成登录注册界面的布局和代码逻辑，新增开机logo       |
 | 2019-11-26 | 完成自动登录功能，加入主页搜索界面,更换主题颜色为蓝色 |
 | 2019-11-26 | 完成个人界面的设置，暂时可以修改昵称                |
+| 2010-11-29 | 完成各个界面的基本布局，可以见人了，但是还没有什么功能 |
 
 > **项目成员**
 
-[刘进](https://github.com/1059024691)
+[刘进](https://github.com/1059024691)（APP开发）
+
 [刘艺豪](#)
-[李易](#)
+
+[李易](#)（后台开发）
+
 [吴嘉诚](#)
 
 > **项目demo**
@@ -56,28 +60,32 @@ Language: Java
 
 ![启动](./image/start.jpg)
 ![主页](./image/index.jpg)
+![社区](./image/shequ.jpg)
 ![发布](./image/publish.jpg)
+![消息](./image/message.jpg)
+![个人](./image/my.jpg)
 ![发布商品](./image/publish_good.jpg)
 ![登录](./image/login.jpg)
-![个人](./image/my.jpg)
 ![设置](./image/setting.png)
 ![个人资料](./image/setting_person.png)
 ![编辑昵称](./image/edit_name.jpg)
-> **声明**
+> **免责声明**
 
-本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。感谢各位网友朋友的开源分享，一切责任概不负责
+本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。感谢各位网友朋友的开源分享，本项目仅用于学习交流，严禁商用，一切责任概不负责
 
 > **参考链接**
+
+整体框架：[咸鱼APP](https://2.taobao.com/)
 
 导航栏：[Android底部菜单栏实现的实例代码_Android_脚本之家](https://www.jb51.net/article/140081.htm)
 
 App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://bingoicon.com/font)
 
-导航栏，发布界面图标：[Iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=33)
+导航栏，主页，社区，我的发布界面图标：[Iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=33)
 
 发布按钮的弹出动画：[gqdy365/WeiboPopupWindow: 模仿新浪微博菜单弹出界面；](https://github.com/gqdy365/WeiboPopupWindow)
 
-发布界面图标：[咸鱼APP](https://2.taobao.com/)
+消息界面图标：[咸鱼APP](https://2.taobao.com/)
 
 发布界面点击提示：[【Android】在非繼承自Activity的類別內顯示toast](https://medium.com/@leowang0308/android-%E5%9C%A8%E9%9D%9E%E7%B9%BC%E6%89%BF%E8%87%AAactivity%E7%9A%84%E9%A1%9E%E5%88%A5%E5%85%A7%E9%A1%AF%E7%A4%BAtoast-457b3a677ced)
 
@@ -95,8 +103,12 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 
 首页搜索样式：[yetwish/CustomSearchView: customer search view](https://github.com/yetwish/CustomSearchView)
 
-头像： [square/picasso: A powerful image downloading and caching library for Android](https://github.com/square/picasso)
+圆形头像： [square/picasso: A powerful image downloading and caching library for Android](https://github.com/square/picasso)
 
 头像图片： [SheHuan/NiceImageView: Android 圆角、圆形 ImageView](https://github.com/SheHuan/NiceImageView)
 
 圆形头像及设置界面： [leonHua/LSettingView: 非常常用的设置界面条目 very useful setting item](https://github.com/leonHua/LSettingView)
+
+> **参考图书**
+
+Android 第一行代码（第二版）

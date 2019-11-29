@@ -12,9 +12,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.jianlou.Internet.HttpUtil;
-import com.example.jianlou.Login.Register;
 import com.example.jianlou.R;
-import com.example.jianlou.staticVar.PublishTable;
+import com.example.jianlou.staticVar.Table;
 import com.example.jianlou.staticVar.StaticVar;
 
 import java.io.IOException;
@@ -23,7 +22,9 @@ import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
+/**
+ * 设置项中的修改昵称的界面活动类
+ */
 public class EditName extends AppCompatActivity implements View.OnClickListener {
     private EditText user_name;
 
@@ -54,8 +55,8 @@ public class EditName extends AppCompatActivity implements View.OnClickListener 
                 StaticVar.user_name = user_name.getText().toString();
                 change_information();
                 RequestBody requestBody = new FormBody.Builder()
-                        .add(PublishTable.username, StaticVar.username)
-                        .add(PublishTable.user_name, user_name.getText().toString())
+                        .add(Table.username, StaticVar.username)
+                        .add(Table.user_name, user_name.getText().toString())
                         .build();
                 HttpUtil.sendOkHttpRequest(StaticVar.editNameUrl, requestBody, new okhttp3.Callback() {
                     @Override
