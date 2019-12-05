@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -18,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".my.EditName"></activity>
+        <activity android:name=".message.chat"></activity>
+        <activity android:name=".message.message_friend" />
+        <activity android:name=".my.EditName" />
         <activity android:name=".my.SettingPerson" />
         <activity android:name=".my.Setting" /> <!-- 登录活动 -->
         <activity android:name=".Activity.StartUP" />

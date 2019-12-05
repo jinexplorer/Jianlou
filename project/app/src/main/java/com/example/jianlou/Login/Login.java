@@ -179,7 +179,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 responseData = response.body().string();
                 switch (responseData) {
                     case "success":
-                        outputMessage("登录成功");
                         StaticVar.username=phone_number.getText().toString();
                         StaticVar.isLogin=true;
                         remember_login();

@@ -190,7 +190,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                             responseData = response.body().string();
                             switch (responseData) {
                                 case "success":
-                                    outputMessage("注册成功");
                                     finish();
                                     break;
                                 case "failed":

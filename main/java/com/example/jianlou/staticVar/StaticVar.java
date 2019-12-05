@@ -5,11 +5,12 @@ package com.example.jianlou.staticVar;
 public class StaticVar {
 
     //Url
-    public static final String publishUrl="http://10.131.32.240:8000/publish/";
-    public static final String userUrl="http://10.131.32.240:8000/user/";
-    public static final String registerUrl="http://10.131.32.240:8000/register/";
-    public static final String editNameUrl="http://10.131.32.240:8000/editname/";
-    public static final String indexUrl="http://10.131.32.240:8000/index/";
+    private static final String rootUrl="http://10.131.32.240:8000";
+    public static final String publishUrl=rootUrl+"/publish/";
+    public static final String userUrl=rootUrl+"/user/login/";
+    public static final String registerUrl=rootUrl+"/user/register/";
+    public static final String editNameUrl=rootUrl+"/user/editname/";
+    public static final String indexUrl=rootUrl+"/index/";
     //存储键值对的键
     public static String fileName="Login";
     public static String fileIsLogin="isLogin";

@@ -10,7 +10,7 @@ public class Table {
     public static final String classify="classify";
     public static final String time="time";
     //用户属性
-    public static final String username="username";
+    public static final String username="account";
     public static final String password="password";
     public static final String user_name="user_name";
 

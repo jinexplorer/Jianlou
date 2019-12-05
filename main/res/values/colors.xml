@@ -13,8 +13,6 @@
     <color name="blue">#0000ff</color>
     <color name="color_fa">#fafafa</color>
     <color name="divider">#B6B6B6</color>
-
-
     <color name="color_999999">#999999</color>
     <color name="color_eeeeee">#eeeeee</color>
     <color name="color_c61a04">#c61a04</color>
@@ -22,11 +20,12 @@
     <color name="color_d81e06">#d81e06</color>
     <color name="color_b0b8b2">#b0b8b2</color>
     <color name="color_333333">#333333</color>
-
-
     <color name="myred">#eb4f38</color>
     <color name="darkgray">#cccc</color>
     <color name="color_white">#ffffff</color>
     <color name="btn_press_color">#5677fc</color>
     <color name="btn_pressed_color">#3ca0ec</color>
+    <color name="trans_bar_grey">#50393a3e</color>
+
+    <color name="color_eaeaea">#eaeaea</color>
 </resources>

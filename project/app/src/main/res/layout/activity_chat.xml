@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".message.chat">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/chat_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:src="@drawable/picture_back"/>
+        <TextView
+            android:id="@+id/chat_friend_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="start|center"
+            android:text="捡喽用户222"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:background="@color/color_eeeeee"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/chat_message"
+            android:layout_width="0dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:maxLines="4"
+            android:hint="写点什么吧"/>
+        <Button
+            android:id="@+id/chat_send"
+            android:layout_margin="5dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:textColor="@color/white"
+            android:background="@drawable/send_shape"
+            android:text="发送"/>
+    </LinearLayout>
+
+</LinearLayout>

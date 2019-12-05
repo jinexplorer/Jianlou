@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:id="@+id/ll_item"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_margin="5dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/message_friend_head"
+        android:src="@mipmap/cat"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/message_friend_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="捡喽用户刘某人"/>
+        <TextView
+            android:id="@+id/message_friend_message"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:textColor="@color/trans_bar_grey"
+            android:textSize="13sp"
+            android:text="你的节操掉了。。。。。"/>
+    </LinearLayout>
+</LinearLayout>

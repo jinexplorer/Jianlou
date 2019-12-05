@@ -4,7 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.jianlou.R;
@@ -18,8 +21,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<Post> mPostLisht;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        View postView;
         ImageView photo,head;
         TextView user_name,love,talk,content,origin;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -30,6 +35,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             user_name=itemView.findViewById(R.id.shequ_user_name);
             talk=itemView.findViewById(R.id.shequ_talk);
             origin=itemView.findViewById(R.id.shequ_origin);
+            postView=itemView;
         }
     }
     public PostAdapter(List<Post> postList){
@@ -37,9 +43,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
     @NonNull
     @Override
-    public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shequ_recycler_good,parent,false);
-        PostAdapter.ViewHolder holder=new PostAdapter.ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+        holder.postView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position =holder.getAdapterPosition();
+                Post post =mPostLisht.get(position);
+                Toast.makeText(v.getContext(),"你点击了"+post.getPostUser_name()+"的商品", Toast.LENGTH_SHORT).show();
+            }
+        });
         return holder;
     }
 

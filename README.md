@@ -40,8 +40,10 @@ Language: Java
 | 2019-11-21 | 完成登录注册界面的布局和代码逻辑，新增开机logo       |
 | 2019-11-26 | 完成自动登录功能，加入主页搜索界面,更换主题颜色为蓝色 |
 | 2019-11-26 | 完成个人界面的设置，暂时可以修改昵称                |
-| 2010-11-29 | 完成各个界面的基本布局，可以见人了，但是还没有什么功能 |
-
+| 2019-11-29 | 完成各个界面的基本布局，可以见人了，但是还没有什么功能 |
+| 2019-12-04 | 完成交互消息界面的消息列表功能，实现类似微信的长按删除 |
+| 2019-12-04 | 完成聊天界面的layout设计                          |
+| 2019-12-05 | 完成聊天界面的基本功能                             |
 > **项目成员**
 
 [刘进](https://github.com/1059024691)（APP开发）
@@ -69,6 +71,8 @@ Language: Java
 ![设置](./image/setting.png)
 ![个人资料](./image/setting_person.png)
 ![编辑昵称](./image/edit_name.jpg)
+![聊天朋友](./image/friend.jpg)
+![聊天](./image/chat.jpg)
 > **免责声明**
 
 本项目所采用的技术均来自网上，本项目所采用的图片均来自网上。感谢各位网友朋友的开源分享，本项目仅用于学习交流，严禁商用，一切责任概不负责
@@ -108,6 +112,8 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 头像图片： [SheHuan/NiceImageView: Android 圆角、圆形 ImageView](https://github.com/SheHuan/NiceImageView)
 
 圆形头像及设置界面： [leonHua/LSettingView: 非常常用的设置界面条目 very useful setting item](https://github.com/leonHua/LSettingView)
+
+交互消息弹出菜单框及删除： [18_创建 RecyclerView 上下文菜单 ContextMenu - 简书](https://www.jianshu.com/p/38f935009c14)
 
 > **参考图书**
 

@@ -4,7 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +25,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView photo,head;
         TextView content,money,user_name;
+        View goodView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -31,6 +34,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
             content=itemView.findViewById(R.id.index_content);
             money=itemView.findViewById(R.id.index_money);
             user_name=itemView.findViewById(R.id.index_user_name);
+            goodView=itemView;
         }
     }
     public GoodAdapter(List<Good> goodList){
@@ -40,7 +44,15 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
     @Override
     public GoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_recycler_good,parent,false);
-        ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+        holder.goodView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position =holder.getAdapterPosition();
+                Good good =mGoodLisht.get(position);
+                Toast.makeText(v.getContext(),"你点击了"+good.getUser_name()+"的商品",Toast.LENGTH_SHORT).show();
+            }
+        });
         return holder;
     }
     /**

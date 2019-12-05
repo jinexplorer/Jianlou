@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.jianlou.R;
-import com.example.jianlou.index.Good;
 
 import java.util.ArrayList;
 import java.util.List;

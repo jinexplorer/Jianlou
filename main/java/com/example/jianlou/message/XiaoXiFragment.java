@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -47,9 +48,22 @@ public class XiaoXiFragment extends Fragment {
         }
         return rootView;
     }
+
     @Override
     public void onResume() {
         super.onResume();
+        init();
+    }
+
+    private void init() {
+        TextView interact = getActivity().findViewById(R.id.message_interact);
+        interact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),message_friend.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 
