@@ -18,14 +18,21 @@
                 android:layout_height="80dp"
                 android:layout_margin="10dp"/>
             <TextView
-                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_toEndOf="@id/photo"
-                android:text="1xxxxxxxxxx"
-                android:textSize="24sp" />
+                android:text="昵称："
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/photo"
+                android:text="捡喽用户1xxxxxxxxxx"
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/setting"
@@ -36,22 +43,13 @@
                 android:layout_alignParentRight="true"
                 android:src="@mipmap/setting" />
             <TextView
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="55dp"
                 android:layout_toEndOf="@id/photo"
-                android:text="昵称："
-                android:textSize="17sp" />
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="55dp"
-                android:layout_toEndOf="@id/photo"
-                android:text="捡喽用户1xxxxxxxxxx"
-                android:textSize="17sp" />
+                android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                android:textSize="15sp" />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

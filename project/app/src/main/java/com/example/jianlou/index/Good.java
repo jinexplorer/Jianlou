@@ -1,19 +1,23 @@
 package com.example.jianlou.index;
 
+import android.graphics.Bitmap;
+
 public class Good {
     /**
      * 商品类，就是首页的商品的显示的类
      */
-    private int photoID,headID;
-    private String content,money,user_name;
-    public Good(int photoImageID,int headImageID,String string_content,String string_money,String string_user_name){
+    private Bitmap photoID;
+    private int headID;
+    private String content,money,user_name,goodID;
+    public Good(Bitmap photoImageID,int headImageID,String string_content,String string_money,String string_user_name,String goodID){
         photoID=photoImageID;
         headID=headImageID;
         content=string_content;
         money=string_money;
         user_name=string_user_name;
+        this.goodID=goodID;
     }
-    public int getPhotoID(){
+    public Bitmap getPhotoID(){
         return photoID;
     }
     public int getHeadID(){
@@ -30,5 +34,9 @@ public class Good {
 
     public String getUser_name() {
         return user_name;
+    }
+
+    public String getGoodID() {
+        return goodID;
     }
 }

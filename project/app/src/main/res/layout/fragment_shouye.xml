@@ -12,7 +12,6 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/search_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -20,7 +19,7 @@
             android:src="@mipmap/jianlou" />
 
         <EditText
-            android:id="@+id/search_et_input"
+            android:id="@+id/index_search"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
@@ -29,9 +28,8 @@
             android:background="@drawable/search_edittext_shape"
             android:drawableStart="@mipmap/search_icon"
             android:drawablePadding="5dp"
+            android:focusable="false"
             android:hint="请输入关键字"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
             android:textSize="16sp" />
         <ImageView
             android:layout_margin="10dp"
@@ -41,108 +39,122 @@
             android:src="@mipmap/ic_navibar_scan"/>
     </LinearLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:id="@+id/index_swipe">
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/colorPrimaryDark">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/shape">
+                    android:orientation="vertical"
+                    android:background="@color/colorPrimaryDark">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/shape">
+                        <TextView
+                            android:id="@+id/index_phone"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:drawableTop="@mipmap/phone"
+                            android:layout_margin="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="手机"
+                            />
+                        <TextView
+                            android:id="@+id/index_game"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:drawableTop="@mipmap/game"
+                            android:layout_margin="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="游戏"
+                            />
+                        <TextView
+                            android:id="@+id/index_book"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:drawableTop="@mipmap/book"
+                            android:layout_margin="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="图书"
+                            />
+                        <TextView
+                            android:id="@+id/index_pet"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="match_parent"
+                            android:drawableTop="@mipmap/cat_index"
+                            android:layout_margin="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="宠物"
+                            />
+                        <TextView
+                            android:id="@+id/index_all_classfiy"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:layout_height="match_parent"
+                            android:drawableTop="@mipmap/all_classify"
+                            android:layout_margin="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="全部分类"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/index_bar"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/index_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_eeeeee"
+                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/message_notice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:drawableTop="@mipmap/phone"
-                        android:layout_margin="10dp"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:text="手机"
-                        />
-                    <TextView
-                        android:id="@+id/message_interact"
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:drawableTop="@mipmap/game"
-                        android:layout_margin="10dp"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:text="游戏"
-                        />
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:drawableTop="@mipmap/book"
-                        android:layout_margin="10dp"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:text="图书"
-                        />
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:drawableTop="@mipmap/cat_index"
-                        android:layout_margin="10dp"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:text="宠物"
-                        />
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="match_parent"
-                        android:drawableTop="@mipmap/all_classify"
-                        android:layout_margin="10dp"
-                        android:textSize="13sp"
-                        android:textColor="@color/black"
-                        android:text="全部分类"
-                        />
+                        android:layout_gravity="center_vertical"
+                        android:text="------------我是有底线的------------">
+                    </TextView>
                 </LinearLayout>
             </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/index_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:background="@color/color_eeeeee"
-                android:layout_height="match_parent"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:layout_gravity="center_vertical"
-                    android:text="------------我是有底线的------------">
-                </TextView>
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
+
 
 
 </LinearLayout>

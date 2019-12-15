@@ -28,7 +28,7 @@ public class SettingPerson extends AppCompatActivity implements View.OnClickList
         photo=findViewById(R.id.setting_person_photo);
         username=findViewById(R.id.setting_person_username);
         user_name=findViewById(R.id.setting_person_user_name);
-        username.setRightText(StaticVar.username);
+        username.setRightText(StaticVar.cookie);
         user_name.setRightText(StaticVar.user_name);
         user_name.setmOnLSettingItemClick(new LSettingItem.OnLSettingItemClick() {
             @Override

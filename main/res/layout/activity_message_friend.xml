@@ -29,7 +29,12 @@
             android:textSize="18sp" />
 
     </RelativeLayout>
-
+    <ProgressBar
+        android:id="@+id/message_friend_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/message_friend_RecyclerView"
         android:background="@color/white"

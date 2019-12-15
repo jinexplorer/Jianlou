@@ -30,10 +30,10 @@ public class XiaoXiFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(StaticVar.isLogin){
-        }else{
+        if(StaticVar.cookie.equals("")){
             Intent intent=new Intent(getContext(), Login.class);
             Objects.requireNonNull(getActivity()).startActivityForResult(intent, StaticVar.LOGIN);
+        }else{
         }
     }
     @Override

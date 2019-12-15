@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.jianlou.Internet.HttpUtil;
@@ -27,7 +28,7 @@ import okhttp3.Response;
  */
 public class EditName extends AppCompatActivity implements View.OnClickListener {
     private EditText user_name;
-
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class EditName extends AppCompatActivity implements View.OnClickListener 
         Button save = findViewById(R.id.edit_name_save);
         user_name.setText(StaticVar.user_name);
         user_name.requestFocus();
+        progressBar=findViewById(R.id.edit_name_bar);
         back.setOnClickListener(this);
         save.setOnClickListener(this);
     }
@@ -52,30 +54,34 @@ public class EditName extends AppCompatActivity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.edit_name_save:
-                StaticVar.user_name = user_name.getText().toString();
-                change_information();
+                progressBar.setVisibility(View.VISIBLE);
                 RequestBody requestBody = new FormBody.Builder()
-                        .add(Table.username, StaticVar.username)
+                        .add(Table.cookie, StaticVar.cookie)
                         .add(Table.user_name, user_name.getText().toString())
                         .build();
                 HttpUtil.sendOkHttpRequest(StaticVar.editNameUrl, requestBody, new okhttp3.Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
+                        updateUI();
                         outputMessage("请求失败，请检查网络");
                     }
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
+                        updateUI();
                         if (response.code() == 200) {
                             String responseData;
                             if (response.body() != null) {
                                 responseData = response.body().string();
                                 switch (responseData) {
                                     case "success":
-                                        outputMessage("修改成功");
+                                        StaticVar.user_name = user_name.getText().toString();
+                                        change_information();
                                         finish();
                                         break;
-                                    default:
+                                    case "failed":
                                         outputMessage("修改失败");
+                                    default:
+                                        outputMessage("位置错误");
                                 }
                             }
                         } else {
@@ -100,5 +106,13 @@ public class EditName extends AppCompatActivity implements View.OnClickListener 
         SharedPreferences.Editor editor=getSharedPreferences(StaticVar.fileName,MODE_PRIVATE).edit();
         editor.putString(StaticVar.fileUserName,StaticVar.user_name);
         editor.apply();
+    }
+    private void updateUI(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 }

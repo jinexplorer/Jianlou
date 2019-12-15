@@ -35,10 +35,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:background="@color/colorPrimaryDark"
+            android:background="#00000000"
             android:text="@string/fabu"
             android:textColor="@color/white"
             android:textSize="15sp" />
+        <ProgressBar
+            android:visibility="invisible"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/publish_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
     <com.example.jianlou.view.MyScrollView

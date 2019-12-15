@@ -2,184 +2,222 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
+    android:background="@color/color_eeeeee"
     android:orientation="vertical">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:src="@mipmap/qq" />
+    <LinearLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="@color/white"
+            android:textSize="25sp"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/register_left"
+            android:layout_marginTop="130dp"
+            android:scaleType="fitXY"
+            android:layout_marginStart="30dp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:src="@mipmap/login_icon_left" />
+        <ImageView
+            android:id="@+id/register_right"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="130dp"
+            android:scaleType="fitXY"
+            android:layout_marginStart="30dp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:src="@mipmap/login_icon_right" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
+        android:layout_height="wrap_content">
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="13dp"
-            android:paddingEnd="13dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@mipmap/ic_mobile_flag" />
-
-            <EditText
-                android:id="@+id/register_phone_number"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@null"
-                android:hint="@string/hint_login_username"
-                android:inputType="phone"
-                android:maxLength="11"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp">
 
-            <ImageView
-                android:id="@+id/register_clean_phone"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/ic_clear"
-                android:visibility="gone"
-                />
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@mipmap/ic_mobile_flag" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/color_eeeeee" />
+                <EditText
+                    android:id="@+id/register_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="55dp"
+                    android:background="@null"
+                    android:hint="@string/hint_login_username"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="13dp"
-            android:paddingEnd="13dp">
+                <ImageView
+                    android:id="@+id/register_clean_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_clear"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@mipmap/ic_password_flag" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_eeeeee" />
 
-            <EditText
-                android:id="@+id/register_password"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="@string/hint_login_password"
-                android:inputType="textPassword"
-                android:maxLength="30"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp">
 
-            <ImageView
-                android:id="@+id/register_clean_password"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/ic_clear"
-                android:visibility="gone" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@mipmap/ic_password_flag" />
 
-            <ImageView
-                android:id="@+id/register_show_pwd"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/pass_gone" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/register_password"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_login_password"
+                    android:inputType="textPassword"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/register_clean_password"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_clear"
+                    android:visibility="gone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="13dp"
-            android:paddingEnd="13dp">
+                <ImageView
+                    android:id="@+id/register_show_pwd"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/pass_gone" />
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@mipmap/ic_password_flag" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/white" />
 
-            <EditText
-                android:id="@+id/register_password_again"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="@string/hint_login_password_again"
-                android:inputType="textPassword"
-                android:maxLength="30"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp">
 
-            <ImageView
-                android:id="@+id/register_clean_password_again"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/ic_clear"
-                android:visibility="gone" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@mipmap/ic_password_flag" />
 
-            <ImageView
-                android:id="@+id/register_show_pwd_again"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="centerInside"
-                android:src="@mipmap/pass_gone" />
+                <EditText
+                    android:id="@+id/register_password_again"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_login_password_again"
+                    android:inputType="textPassword"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/register_clean_password_again"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_clear"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/register_show_pwd_again"
+                    android:layout_width="40dp"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/pass_gone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_register"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/bg_btn_login_selected"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
         </LinearLayout>
-
-        <Button
-            android:id="@+id/register_register"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="21dp"
-            android:background="@drawable/bg_btn_login_selected"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
+    </LinearLayout>
         <LinearLayout
+            android:padding="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="5dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/register_login"
                 android:layout_width="match_parent"
@@ -187,17 +225,16 @@
                 android:gravity="center"
                 android:text="@string/account_have"
                 android:textColor="@color/color_b0b8b2"
-                android:textSize="15sp" />
-
-
+                android:textSize="16sp" />
         </LinearLayout>
-    </LinearLayout>
-
-    <RelativeLayout
+    <ProgressBar
+        android:id="@+id/register_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:visibility="gone"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

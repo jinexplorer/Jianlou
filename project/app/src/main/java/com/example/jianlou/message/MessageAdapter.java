@@ -67,9 +67,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                         longClicked = false;
                         holder.messageView.setBackgroundResource(R.color.white);
                     } else {
+                        int position =holder.getAdapterPosition();
+                        Message message =mmessageList.get(position);
                         holder.messageView.setBackgroundResource(R.color.color_eeeeee);
                         Intent intent=new Intent(v.getContext(),chat.class);
-                        intent.putExtra("friend_name",holder.user_name.getText().toString());
+                        intent.putExtra("username",message.geMessagetUsername());
+                        intent.putExtra("friend_name",message.getMessageUser_name());
                         v.getContext().startActivity(intent);
                     }
                 }

@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -16,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".message.chat"></activity>
+        <activity android:name=".my.myPublish"></activity>
+        <activity android:name=".index.good_detail" />
+        <activity android:name=".index.search" />
+        <activity android:name=".index.index_search" />
+        <activity android:name=".message.chat" />
         <activity android:name=".message.message_friend" />
         <activity android:name=".my.EditName" />
         <activity android:name=".my.SettingPerson" />
@@ -24,6 +29,7 @@
         <activity android:name=".Activity.StartUP" />
         <activity android:name=".Login.Register" />
         <activity android:name=".Login.Login" />
+        <activity android:name=".index.classfiy.classify" />
 
         <meta-data
             android:name="android.max_aspect"

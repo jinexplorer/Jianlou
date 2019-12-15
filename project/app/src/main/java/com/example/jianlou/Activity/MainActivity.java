@@ -11,12 +11,16 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import com.example.jianlou.R;
+import com.example.jianlou.message.ChatMessage;
 import com.example.jianlou.shequ.SheQuFragment;
 import com.example.jianlou.index.ShouYeFragment;
 import com.example.jianlou.my.WoDeFragment;
 import com.example.jianlou.message.XiaoXiFragment;
 import com.example.jianlou.publish.publish.Publish;
 import com.example.jianlou.staticVar.StaticVar;
+
+import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LitePal.getDatabase();
+        //DataSupport.deleteAll(ChatMessage.class);
         setContentView(R.layout.activity_main);
         get_login();
         initView();
@@ -168,8 +174,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void get_login() {
         SharedPreferences preferences = getSharedPreferences(StaticVar.fileName, MODE_PRIVATE);
-        StaticVar.isLogin = preferences.getBoolean(StaticVar.fileIsLogin, false);
-        StaticVar.username = preferences.getString(StaticVar.fileUsername, "");
-        StaticVar.user_name=preferences.getString(StaticVar.fileUserName,"捡喽用户"+StaticVar.username);
+        StaticVar.cookie=preferences.getString(StaticVar.fileCookiename,"");
+        StaticVar.user_name=preferences.getString(StaticVar.fileUserName,"");
     }
 }

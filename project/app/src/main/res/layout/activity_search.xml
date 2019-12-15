@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".index.search">
+    <LinearLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/search_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:padding="15dp"
+        android:src="@drawable/picture_back" />
+    <EditText
+        android:id="@+id/search_search"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/search_edittext_shape"
+        android:drawableStart="@mipmap/search_icon"
+        android:drawablePadding="5dp"
+        android:focusable="false"
+        android:hint="请输入关键字"
+        android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/search_check"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/search_check1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:textColor="@drawable/search_sort_select"
+                android:text="综合排序"/>
+            <RadioButton
+                android:id="@+id/search_check2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:textColor="@drawable/search_sort_select"
+                android:text="时间正序"/>
+            <RadioButton
+                android:id="@+id/search_check3"
+                android:layout_width="0dp"
+                android:textColor="@drawable/search_sort_select"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:text="时间倒序"/>
+        </RadioGroup>
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/search_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+</LinearLayout>

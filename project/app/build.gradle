@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.jianlou"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -52,4 +52,15 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     //设置模块
     implementation 'com.leon:lsettingviewlibrary:1.7.0'
+    //搜索
+    implementation 'com.carson_ho:SearchLayout:1.0.1'
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //下拉刷新
+    implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
+    //分类
+    implementation 'com.facebook.fresco:fresco:0.11.0'
+    implementation 'com.alibaba:fastjson:1.1.46.android'
+    //数据库
+    implementation 'org.litepal.android:core:1.4.1'
 }

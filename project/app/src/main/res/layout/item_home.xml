@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="hello,world" />
+
+    <com.example.jianlou.index.classfiy.GridViewForScrollView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3" />
+</LinearLayout>

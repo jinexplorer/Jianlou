@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +29,8 @@ import okhttp3.Response;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
     private EditText phone_number, password, password_again;
-    private ImageView clean_phone, clean_password, show_password, clean_password_again, show_password_again;
-
+    private ImageView clean_phone, clean_password, show_password, clean_password_again, show_password_again,left,right;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         clean_password_again = findViewById(R.id.register_clean_password_again);
         show_password = findViewById(R.id.register_show_pwd);
         show_password_again = findViewById(R.id.register_show_pwd_again);
-
+        left=findViewById(R.id.register_left);
+        right=findViewById(R.id.register_right);
+        progressBar=findViewById(R.id.register_progress);
         Button register = findViewById(R.id.register_register);
         TextView login = findViewById(R.id.register_login);
         TextView contact = findViewById(R.id.register_contact);
@@ -84,6 +87,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             }
         });
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left_close);
+                    right.setImageResource(R.mipmap.login_icon_right_close);
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left);
+                    right.setImageResource(R.mipmap.login_icon_right);
+                }
+            }
+        });
         password_again.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -100,7 +117,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
             }
         });
-
+        password_again.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left_close);
+                    right.setImageResource(R.mipmap.login_icon_right_close);
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left);
+                    right.setImageResource(R.mipmap.login_icon_right);
+                }
+            }
+        });
         clean_phone.setOnClickListener(this);
         clean_password.setOnClickListener(this);
         clean_password_again.setOnClickListener(this);
@@ -172,6 +202,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         } else if (!pwd.equals(pwd_again)) {
             Toast.makeText(Register.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
         } else {
+            progressBar.setVisibility(View.VISIBLE);
             RequestBody requestBody = new FormBody.Builder()
                     .add(Table.username, phoneNumber)
                     .add(Table.password, pwd)
@@ -179,11 +210,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             HttpUtil.sendOkHttpRequest(StaticVar.registerUrl, requestBody, new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
+                    updateUI();
                     outputMessage("请求失败，请检查网络");
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+                    updateUI();
                     if (response.code() == 200) {
                         String responseData;
                         if (response.body() != null) {
@@ -213,7 +246,17 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
      */
     private void outputMessage(String message) {
         Looper.prepare();
+        progressBar.setVisibility(View.GONE);
         Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
         Looper.loop();
+    }
+
+    private void updateUI(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 }

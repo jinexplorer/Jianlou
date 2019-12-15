@@ -1,5 +1,6 @@
 package com.example.jianlou.index;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,9 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
             public void onClick(View v) {
                 int position =holder.getAdapterPosition();
                 Good good =mGoodLisht.get(position);
-                Toast.makeText(v.getContext(),"你点击了"+good.getUser_name()+"的商品",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(v.getContext(),good_detail.class);
+                intent.putExtra("goodsID",good.getGoodID());
+                v.getContext().startActivity(intent);
             }
         });
         return holder;
@@ -61,7 +64,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull GoodAdapter.ViewHolder holder, int position) {
         Good good=mGoodLisht.get(position);
-        holder.photo.setImageResource(good.getPhotoID());
+        holder.photo.setImageBitmap(good.getPhotoID());
         Picasso.get().load(good.getHeadID()).transform(new CircleTransform()).into(holder.head);
         holder.content.setText(good.getContent());
         holder.money.setText(good.getMoney());

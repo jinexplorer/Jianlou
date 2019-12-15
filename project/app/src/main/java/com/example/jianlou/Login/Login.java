@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,12 @@ import com.example.jianlou.Internet.HttpUtil;
 import com.example.jianlou.R;
 import com.example.jianlou.staticVar.Table;
 import com.example.jianlou.staticVar.StaticVar;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -30,8 +37,8 @@ import okhttp3.Response;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private EditText phone_number,password;
-    private ImageView clean_phone,clean_password,show_password;
-
+    private ImageView clean_phone,clean_password,show_password,left,right;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         clean_phone=findViewById(R.id.login_clean_phone);
         clean_password=findViewById(R.id.login_clean_password);
         show_password=findViewById(R.id.login_show_pwd);
+        left=findViewById(R.id.login_left);
+        right=findViewById(R.id.login_right);
+        progressBar=findViewById(R.id.login_progress);
         Button login = findViewById(R.id.login_login);
         TextView register = findViewById(R.id.login_register);
         TextView forget_passsword = findViewById(R.id.login_forget_password);
@@ -82,6 +92,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left_close);
+                    right.setImageResource(R.mipmap.login_icon_right_close);
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    left.setImageResource(R.mipmap.login_icon_left);
+                    right.setImageResource(R.mipmap.login_icon_right);
+                }
             }
         });
 
@@ -143,8 +168,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
         //预设用户
         else if(phoneNumber.equals(StaticVar.setUsername)&&pwd.equals(StaticVar.setPassword)){
-            StaticVar.username=phoneNumber;
-            StaticVar.isLogin=true;
+            StaticVar.cookie=phoneNumber;
+            StaticVar.user_name="捡喽用户"+phoneNumber;
             remember_login();
             Intent intent =new Intent();
             setResult(RESULT_OK,intent);
@@ -153,6 +178,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         else if (phoneNumber.length()<11){
             Toast.makeText(Login.this,"请填写正确的手机号",Toast.LENGTH_SHORT).show();
         }else{
+            progressBar.setVisibility(View.VISIBLE);
             RequestBody requestBody=new FormBody.Builder()
                     .add(Table.username,phoneNumber)
                     .add(Table.password,pwd)
@@ -160,10 +186,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             HttpUtil.sendOkHttpRequest(StaticVar.userUrl,requestBody, new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
+                    updateUI();
                     outputMessage("请求失败，请检查网络");
                 }
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+                    updateUI();
                     response(response);
                 }
             });
@@ -174,24 +202,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
      */
     private void response(Response response) throws IOException {
         if (response.code() == 200) {
-            String responseData;
             if (response.body() != null) {
-                responseData = response.body().string();
-                switch (responseData) {
-                    case "success":
-                        StaticVar.username=phone_number.getText().toString();
-                        StaticVar.isLogin=true;
-                        remember_login();
-                        Intent intent =new Intent();
-                        setResult(RESULT_OK,intent);
-                        finish();
-                        break;
-                    case "failed":
+                String responseData = response.body().string();
+                    if(responseData.equals("failed")){
                         outputMessage("账号/密码错误");
-                        break;
-                    default:
-                        outputMessage("未知错误");
-                }}}
+                    }else {
+                        try {
+                            JSONObject jsonObject=new JSONObject(responseData);
+                            StaticVar.cookie=jsonObject.getString(StaticVar.fileCookiename);
+                            StaticVar.user_name=jsonObject.getString(StaticVar.fileUserName);
+                            remember_login();
+                            Intent intent =new Intent();
+                            setResult(RESULT_OK,intent);
+                            finish();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }}
         else {
             outputMessage("服务器故障");
         }
@@ -201,8 +230,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
      */
     private void remember_login(){
         SharedPreferences.Editor editor=getSharedPreferences(StaticVar.fileName,MODE_PRIVATE).edit();
-        editor.putBoolean(StaticVar.fileIsLogin,StaticVar.isLogin);
-        editor.putString(StaticVar.fileUsername,StaticVar.username);
+        editor.putString(StaticVar.fileCookiename,StaticVar.cookie);
+        editor.putString(StaticVar.fileUserName,StaticVar.user_name);
         editor.apply();
     }
     /**
@@ -222,5 +251,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Intent intent =new Intent();
         setResult(RESULT_CANCELED,intent);
         finish();
+    }
+
+    private void updateUI(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 }

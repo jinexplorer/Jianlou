@@ -57,7 +57,7 @@ public class WoDeFragment extends Fragment implements View.OnClickListener {
         photo=getActivity().findViewById(R.id.photo);
 
         setting.setOnClickListener(this);
-        username.setText(StaticVar.username);
+        username.setText(StaticVar.cookie);
         user_name.setText(StaticVar.user_name);
         Picasso.get().load(R.mipmap.cat).transform(new CircleTransform()).into(photo);
     }
@@ -65,11 +65,10 @@ public class WoDeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        if(StaticVar.isLogin){
-            init();
-        }else{
-            Intent intent=new Intent(getContext(), Login.class);
+        if(StaticVar.cookie.equals("")){Intent intent=new Intent(getContext(), Login.class);
             Objects.requireNonNull(getActivity()).startActivityForResult(intent,StaticVar.LOGIN);
+        }else{
+            init();
         }
     }
 

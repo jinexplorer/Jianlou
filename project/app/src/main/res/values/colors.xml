@@ -28,4 +28,12 @@
     <color name="trans_bar_grey">#50393a3e</color>
 
     <color name="color_eaeaea">#eaeaea</color>
+
+    <color name="background">#f1f1f1</color>
+
+    <color name="sred">#ff4141</color>
+    <color name="gold">#d8ab5c</color>
+    <color name="orange">#ffa500</color>
+    <color name="pink">#ffc0cb</color>
+    <color name="green">#FF34A350</color>
 </resources>
