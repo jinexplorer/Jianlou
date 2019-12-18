@@ -138,19 +138,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/color_eeeeee"
                     android:layout_height="match_parent"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="------------我是有底线的------------">
-                    </TextView>
-                </LinearLayout>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>

@@ -15,9 +15,20 @@
 
 > **开发环境**
 
-IDE:Android Studio
+前端:
 
-Language: Java
+	IDE:Android Studio
+	
+	Language: Java
+
+后台:
+
+	IDE:Pycharm
+	
+	Language: python
+
+	框架：Django
+
 
 > **工程结构**
 
@@ -26,6 +37,8 @@ Language: Java
           java                Java代码所处的地方
 	APP                       示例APP
     project                   完整的工程文件
+	houtai                    后台的Django代码
+
 
 > **项目进展**
 
@@ -47,6 +60,16 @@ Language: Java
 | 2019-12-14 | 所有界面基本实现了，与网络的交互图片也已经完成，收尾中 |
 | 2019-12-15 | 主要各个功能全部打通,开始正式收尾                   |
 | 2019-12-15 | 聊天界面,主页界面可以告一段落结束了                 |
+| 2019-12-18 | 加入上拉加载和下拉刷新，完成所有功能，完工                                |
+
+> **项目统计**
+
+前端Java代码:5887行
+
+前端XML代码：3966行
+
+后端python代码：1912行
+
 > **项目成员**
 
 [刘进](https://github.com/1059024691)（APP开发）
@@ -127,6 +150,8 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 首页搜索： [Carson-Ho/Search_Layout: 一款封装了 历史搜索记录功能 &amp; 样式 的Android自定义搜索框](https://github.com/Carson-Ho/Search_Layout)
 
 分类界面： [kevinTutu/CategoryDemo: 仿京东、拼多多分类页](https://github.com/kevinTutu/CategoryDemo)
+
+上拉加载： [Android RecyclerView下拉刷新 &amp; 上拉加载更多 - 简书](https://www.jianshu.com/p/b502c5b59998)
 
 > **参考图书**
 

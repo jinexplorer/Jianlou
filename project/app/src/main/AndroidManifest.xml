@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".my.myPublish"></activity>
+        <activity android:name=".my.myPublish" />
         <activity android:name=".index.good_detail" />
         <activity android:name=".index.search" />
         <activity android:name=".index.index_search" />

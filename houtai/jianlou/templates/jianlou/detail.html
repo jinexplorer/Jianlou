@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>介绍</title>
+</head>
+<body>
+
+{% extends "jianlou/base.html" %}
+{% block content %}
+
+<h1>{{ goods.goods_name }}</h1>
+<ul>
+{% for describe in goods.describe_set.all %}
+    <li><p>介绍:{{ describe.describe_text }}</p></li>
+    <li><p>价格:{{ describe.price }}</p></li>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'shop:edit' goods.id describe.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="describe_text">
+    <label for="describe{{ forloop.counter }}">描述</label><br>
+    <input type="text" name="price">
+    <label for="describe{{ forloop.counter }}">价格</label><br>
+    <input type="submit" name="submit">
+    </form>
+{% endfor %}
+
+{% endblock content %}
+</ul>
+
+
+</body>
+</html>

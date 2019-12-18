@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,9 +29,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import android.util.Base64;
 
@@ -43,6 +49,13 @@ public class ShouYeFragment extends Fragment implements WaveSwipeRefreshLayout.O
     private boolean first=true;
     private WaveSwipeRefreshLayout mWaveSwipeRefreshLayout;
     private TextView all,phone,game,book,pet;
+    private int nowPage=1;
+    private int maxPage=0;
+    private GoodAdapter goodAdapter;
+
+    private int NORMAL_LOADING=0;
+    private int LOADING_MORE=1;
+    private int state=NORMAL_LOADING;
 
     public ShouYeFragment(){}
     public static ShouYeFragment getNewInstance(){
@@ -78,6 +91,9 @@ public class ShouYeFragment extends Fragment implements WaveSwipeRefreshLayout.O
             @Override
             public void run() {
                 // 更新が終了したらインジケータ非表示
+                state=NORMAL_LOADING;
+                nowPage=1;
+                maxPage=0;
                 initGoods();
                 mWaveSwipeRefreshLayout.setWaveColor(0xFF000000+new Random().nextInt(0xFFFFFF)); // Random assign
             }
@@ -117,16 +133,45 @@ public class ShouYeFragment extends Fragment implements WaveSwipeRefreshLayout.O
                     startActivity(intent);
                 }
             });
-
             refresh();
+            recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+                @Override
+                public void onLoadMore() {
+                    goodAdapter.setLoadState(GoodAdapter.LOADING);
+                    if (goodList.size() < maxPage) {
+                        // 模拟获取网络数据，延时1s
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        state=LOADING_MORE;
+                                        initGoods();
+                                        goodAdapter.setLoadState(GoodAdapter.LOADING_COMPLETE);
+                                    }
+                                });
+                            }
+                        }, 1000);
+                    } else {
+                        // 显示加载到底的提示
+                        goodAdapter.setLoadState(GoodAdapter.LOADING_END);
+                    }
+                }
+            });
         }
     }
 
 
 
     private void initGoods() {
-        goodList.clear();
-        HttpUtil.sendOkHttpRequest(StaticVar.indexUrl,new Callback() {
+        if(state==NORMAL_LOADING){
+            goodList.clear();
+        }
+        RequestBody requestBody=new FormBody.Builder()
+                .add("page",String.valueOf(nowPage))
+                .build();
+        HttpUtil.sendOkHttpRequest(StaticVar.indexUrl,requestBody,new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 updateUI();
@@ -148,16 +193,19 @@ public class ShouYeFragment extends Fragment implements WaveSwipeRefreshLayout.O
                 }else {
                     try {
                             JSONArray jsonArray=new JSONArray(responseData);
+                            nowPage++;
                             for(int i=0;i<jsonArray.length();i++){
                                 JSONObject jsonObject=jsonArray.getJSONObject(i);
                                 String money=jsonObject.getString("money");
                                 String content = jsonObject.getString("content");
                                 String goodID = jsonObject.getString("goodsID");
                                 String user_name=jsonObject.getString("user_name");
-                                String string = jsonObject.getString("image");
-                                byte[] bitmapArray = android.util.Base64.decode(string, Base64.DEFAULT);
-                                Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
-                                Good good=new Good(bitmap,R.mipmap.cat,content,money,user_name,goodID);
+                                //maxPage=Integer.getInteger(jsonObject.getString("max_page"));
+                                String string = StaticVar.imageUrl+jsonObject.getString("image");
+//                                byte[] bitmapArray = android.util.Base64.decode(string, Base64.DEFAULT);
+//                                Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+                                Uri uri=Uri.parse(string);
+                                Good good=new Good(uri,R.mipmap.cat,content,money,user_name,goodID);
                                 goodList.add(good);
                             }
                             updateGood();
@@ -174,8 +222,8 @@ public class ShouYeFragment extends Fragment implements WaveSwipeRefreshLayout.O
         (getActivity()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                GoodAdapter goodAdapter = new GoodAdapter(goodList);
-                recyclerView.setAdapter(goodAdapter);
+                    goodAdapter = new GoodAdapter(goodList);
+                    recyclerView.setAdapter(goodAdapter);
             }
         });
     }

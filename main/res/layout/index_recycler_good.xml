@@ -8,7 +8,6 @@
     android:background="@drawable/shape">
     <ImageView
         android:id="@+id/index_photo"
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="fitXY"
@@ -20,7 +19,7 @@
         android:id="@+id/index_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="22"
+        android:maxLines="1"
         android:textColor="@color/black"
         android:textSize="15sp"/>
 

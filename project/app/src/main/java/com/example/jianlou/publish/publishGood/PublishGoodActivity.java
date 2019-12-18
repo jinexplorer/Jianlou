@@ -211,7 +211,11 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
                     .cutOutQuality(90)// 裁剪输出质量 默认100
                     .minimumCompressSize(100)// 小于100kb的图片不压缩
                     .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
+            if(selectList != null){
+                Toast.makeText(PublishGoodActivity.this,selectList.size(),Toast.LENGTH_SHORT).show();
+            }
         }
+
     };
 
     /**
@@ -322,7 +326,7 @@ public class PublishGoodActivity extends AppCompatActivity implements View.OnCli
         params.put(Table.time, String.valueOf(new Date()));
         List<File> fileList = new ArrayList<>();
         for(int i=0;i<selectList.size();i++){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                 File file=new File(selectList.get(i).getAndroidQToPath());
                 fileList.add(file);
             }else {

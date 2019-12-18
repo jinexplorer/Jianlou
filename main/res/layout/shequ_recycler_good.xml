@@ -10,7 +10,6 @@
         android:layout_height="200dp">
         <ImageView
             android:id="@+id/shequ_photo"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"

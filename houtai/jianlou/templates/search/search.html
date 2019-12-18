@@ -1,0 +1,54 @@
+
+{% block title %}商品列表{% endblock %}
+
+{% block content %}
+    <div class="col-md-9">
+    <div class="row text-center vertical-middle-sm">
+        <h1>搜索结果</h1>
+    </div>
+　　{# 如果存在搜索关键字 #}
+    {% if query %}
+        {% for result in page.object_list %}<div class="media">
+            <a href="{{  result.object.get_absolute_url }}" class="list-group-item active">
+                    {% if result.object.avatar %}
+                        <div class="media-left">
+                            <img src="{{  result.object.avatar.url }}" alt="avatar" style="max-width: 100px; border-radius: 20px">
+                        </div>
+            {% endif %}
+                <div class="media-body">
+                    <h4 class="list-group-item-heading">价格：{{ result.object.money }}</h4>
+                    <p class="list-group-item-text">卖家：{{ result.object.owner.username}}</p>
+                    <p class="list-group-item-text">概要：{{ result.object.content}}</p>
+                </div>
+            </a>
+        </div>
+            {% empty %}
+            <h3>没有找到相关商品</h3>
+        {% endfor %}
+    {% endif %}
+
+{#        {% include 'paginator.html' %}#}
+
+{#    分页插件，下一页和上一页记得要带上q={{ query }}参数，否则单击下一页时会丢失搜索参数q，而显示出来全部的文章的第二页#}
+    <div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <a href="?q={{ query }}&page={{ page.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page{{ page.number }} of {{ page.paginator.num_pages }}
+        </span>
+
+        {% if page.has_next %}
+            <a href="?q={{ query }}&page={{ page.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div></div>
+
+    <div class="col-md-3">
+        <p class="text-center">广告位招租</p>
+            <a href="#"><img src="https://dm30webimages.lynkco.com.cn/LynkCoPortal/Content/images/chenxing2/03yushou/pc/4.jpg" width="260px"></a></div>
+
+
+{% endblock %}

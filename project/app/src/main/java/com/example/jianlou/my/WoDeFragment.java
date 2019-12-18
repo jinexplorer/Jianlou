@@ -23,7 +23,7 @@ public class WoDeFragment extends Fragment implements View.OnClickListener {
     // 缓存Fragment view
     private View rootView;
     private  static WoDeFragment WoDeFragment;
-    private TextView username,user_name;
+    private TextView username,user_name,my;
     private ImageView setting,photo;
 
 
@@ -55,7 +55,14 @@ public class WoDeFragment extends Fragment implements View.OnClickListener {
         user_name=getActivity().findViewById(R.id.user_name);
         setting=getActivity().findViewById(R.id.setting);
         photo=getActivity().findViewById(R.id.photo);
-
+        my=getActivity().findViewById(R.id.my);
+        my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getContext(),myPublish.class);
+                startActivity(intent);
+            }
+        });
         setting.setOnClickListener(this);
         username.setText(StaticVar.cookie);
         user_name.setText(StaticVar.user_name);

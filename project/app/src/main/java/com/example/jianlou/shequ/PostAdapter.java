@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.jianlou.R;
 import com.example.jianlou.my.CircleTransform;
+import com.example.jianlou.my.RoundTransform;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 /**
@@ -61,7 +62,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post=mPostLisht.get(position);
         Picasso.get().load(post.getPostHeadID()).transform(new CircleTransform()).into(holder.head);
-        holder.photo.setImageResource(post.getPostPhotoID());
+        Picasso.get().load(post.getPostPhotoID()).placeholder(R.mipmap.loading).transform(new RoundTransform(10,0)).into(holder.photo);
+
         holder.content.setText(post.getPostContent());
         holder.user_name.setText(post.getPostUser_name());
         holder.talk.setText(post.getPostTalk());

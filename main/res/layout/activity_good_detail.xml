@@ -74,6 +74,14 @@
                     android:layout_gravity="center"
                     />
             </LinearLayout>
+            <TextView
+                android:id="@+id/good_detail_time"
+                android:paddingStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_b0b8b2"
+                android:textSize="16sp"
+                android:text=""/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -87,26 +95,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/myred"
-                        android:textSize="30sp"
+                        android:textSize="25sp"
                         android:layout_marginStart="10dp"
                         android:text=""/>
                     <TextView
                         android:id="@+id/good_detail_send_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/myred"
-                        android:textSize="20sp"
+                        android:textColor="@color/bar_grey_90"
+                        android:textSize="17sp"
+                        android:layout_marginStart="10dp"
+                        android:text=""/>
+                    <TextView
+                        android:id="@+id/good_detail_origin_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_999999"
+                        android:textSize="17sp"
                         android:layout_marginStart="10dp"
                         android:text=""/>
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/good_detail_origin_money"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/myred"
-                    android:textSize="20sp"
-                    android:layout_marginStart="10dp"
-                    android:text=""/>
+
                 <TextView
                     android:id="@+id/good_detail_content"
                     android:padding="10dp"

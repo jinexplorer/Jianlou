@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品</title>
+</head>
+<body>
+{% extends "jianlou/base.html" %}
+{% block content %}
+
+{% if latest_goods_list %}
+    <ul>
+    {% for goods in latest_goods_list %}
+        <li><a href="{% url 'shop:detail' goods.id %}">{{ goods.goods_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No goods are available.</p>
+{% endif %}
+
+{% endblock content %}
+</body>
+</html>

@@ -9,6 +9,8 @@ import com.example.jianlou.message.chat;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Base64;
@@ -38,9 +40,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class good_detail extends AppCompatActivity implements View.OnClickListener {
+
+
+
+
+
     private String goodsID;
     ImageView back,chat,head;
-    TextView user_name,money,content,origin_money,send_money;
+    TextView user_name,money,content,origin_money,send_money,time;
     RecyclerView recyclerView;
     private ProgressBar progressBar;
     private List<Photo> photoList=new ArrayList<>();
@@ -64,6 +71,9 @@ public class good_detail extends AppCompatActivity implements View.OnClickListen
         content=findViewById(R.id.good_detail_content);
         recyclerView=findViewById(R.id.good_detail_recycle);
         head=findViewById(R.id.good_detail_photo);
+        time=findViewById(R.id.good_detail_time);
+        origin_money.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        money.getPaint().setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
         back.setOnClickListener(this);
         chat.setOnClickListener(this);
         initPhoto();
@@ -109,11 +119,13 @@ public class good_detail extends AppCompatActivity implements View.OnClickListen
                         String money=jsonObject.getString("money");
                         String content=jsonObject.getString("content");
                         String images=jsonObject.getString("images");
+                        String time=jsonObject.getString("time");
                         JSONArray jsonArray=new JSONArray(images);
                         for(int i=0;i<jsonArray.length();i++){
-                            String string =jsonArray.getJSONObject(i).getString("image");
-                            loadImage(string);                        }
-                        updatePhoto(user_name,money,content,origin_money,send_money);
+                            String string =StaticVar.imageUrl+jsonArray.getJSONObject(i).getString("image");
+                            loadImage(string);
+                        }
+                        updatePhoto(user_name,money,content,origin_money,send_money,time);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -125,12 +137,11 @@ public class good_detail extends AppCompatActivity implements View.OnClickListen
     }
 
     private void loadImage(String string) {
-            byte[] bitmapArray = android.util.Base64.decode(string, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
-            photoList.add(new Photo(bitmap));
+        Uri uri=Uri.parse(string);
+            photoList.add(new Photo(uri));
     }
 
-    private void updatePhoto(String name,String mon,String con,String ori,String send){
+    private void updatePhoto(String name,String mon,String con,String ori,String send,String times){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -139,7 +150,8 @@ public class good_detail extends AppCompatActivity implements View.OnClickListen
                 money.setText(mon);
                 content.setText(con);
                 send_money.setText("("+send+")");
-                origin_money.setText("入手价:"+ori);
+                origin_money.setText(ori);
+                time.setText("发布于:"+times);
                 Picasso.get().load(R.mipmap.cat).transform(new CircleTransform()).into(head);
                 PhotoAdapter adapter = new PhotoAdapter(photoList);
                 recyclerView.setAdapter(adapter);
