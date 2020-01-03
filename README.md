@@ -1,13 +1,12 @@
 # 捡喽
 
-![](./image/icon.png)
+![icon](./image/icon.png)
 
-## 面向校园的二手交易平台APP ##
+## 面向校园的二手交易平台APP
 
 ***
 
-
-### **简介** ###
+### **简介**
 
 > **项目简介**
 
@@ -15,30 +14,61 @@
 
 > **开发环境**
 
+```开发环境
 前端:
-
-	IDE:Android Studio
-	
-	Language: Java
+    IDE:Android Studio
+    Language: Java
 
 后台:
-
-	IDE:Pycharm
-	
-	Language: python
-
-	框架：Django
-
+    IDE:Pycharm
+    Language: python
+    框架：Django
+```
 
 > **工程结构**
 
-    main->AndroidManifest.xml 注册文件
-	      res                 存放layout和图片等媒体文件的位置
-          java                Java代码所处的地方
-	APP                       示例APP
-    project                   完整的工程文件
-	houtai                    后台的Django代码
+```目录树
+ |
+ |-----main
+        |-----AndroidManifest.xml      -注册文件
+ |      |-----res                      -存放layout和图片等媒体文件的位置
+ |      |-----java                     -Java代码所处的地方
+ |-----APP                             -示例APP
+ |-----project                         -完整的工程文件
+ |-----houtai                          -后台的Django代码
+```
 
+> **项目依赖**
+
+```项目依赖
+    //相册所需模块
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.9'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.14"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    //网络所需模块
+    implementation "com.squareup.okhttp3:okhttp:3.10.0"
+    //头像模块
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //设置模块
+    implementation 'com.leon:lsettingviewlibrary:1.7.0'
+    //搜索
+    implementation 'com.carson_ho:SearchLayout:1.0.1'
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //下拉刷新
+    implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
+    //分类
+    implementation 'com.facebook.fresco:fresco:0.11.0'
+    implementation 'com.alibaba:fastjson:1.1.46.android'
+    //数据库
+    implementation 'org.litepal.android:core:1.4.1'
+```
 
 > **项目进展**
 
@@ -46,7 +76,7 @@
 | :----------|:------------------------------------------------|
 | 2019-10-24 | 完成小组成员的组建，基本确定各个成员的分工           |
 | 2019-10-31 | 完成项目工程的创建，同时完成底部导航栏               |
-| 2019-11-07 | 完成发布项目的模仿微博菜单弹出的动画。				   |
+| 2019-11-07 | 完成发布项目的模仿微博菜单弹出的动画。               |
 | 2019-11-15 | 完成发布的模仿咸鱼的界面。实现九宫格和访问相册，相机   |
 | 2019-11-16 | 完成APP与服务器端的数据交互                        |
 | 2019-11-20 | 优化代码结构，进行详细的注释，去除不必要的文件        |
@@ -60,7 +90,7 @@
 | 2019-12-14 | 所有界面基本实现了，与网络的交互图片也已经完成，收尾中 |
 | 2019-12-15 | 主要各个功能全部打通,开始正式收尾                   |
 | 2019-12-15 | 聊天界面,主页界面可以告一段落结束了                 |
-| 2019-12-18 | 加入上拉加载和下拉刷新，完成所有功能，完工                                |
+| 2019-12-18 | 加入上拉加载和下拉刷新，完成所有功能，完工          |
 
 > **项目统计**
 
@@ -72,13 +102,8 @@
 
 > **项目成员**
 
-[刘进](https://github.com/1059024691)（APP开发）
-
-[刘艺豪](#)
-
-[李易](#)（后台开发）
-
-[吴嘉诚](#)
+[刘进](https://github.com/jinexplorer)（APP开发）
+[李易](https://github.com/liyiblog)（后台开发）
 
 > **项目demo**
 
@@ -156,3 +181,11 @@ App桌面图标:[BingoIcon-在线制作图标_文字图标在线生成](https://
 > **参考图书**
 
 Android 第一行代码（第二版）
+
+> **总结**
+
+项目已经告一段落了。课程展示也还算是比较理想，可能也是因为在最后了，老师也就没有问很多的问题，不过第一个问题就是问我们的启动广告有了吗。咳咳咳，怎么可能，又没人给我们钱做广告。
+
+在这个APP自己耗费了大量的精力，不过也学到了很多，相比于之前的自己能开发一个APP还是相对来说有点成就感的。为自己下一步的学习开发打一个基础。感到可惜的就是自己找了半天了图标，调整了很长时间的laout设计没人注意到。总之APP上自己还有很多需要学习的地方。很多的地方在一开始就走错了路。比如mipmap和drawable。当时学的时候误会了，后面自己也不想再移动了，这么多图片和drawable文件放在一起，担心自己找不到。
+
+自己需要学习的地方还有很多，比如drawable文件很多利用之前的改一下，自己并没有系统的学习过如何写。很多实现的功能都是靠着网上的代码，自己并没有细看细节，就像那个把头像变圆形的地方。还有处理子线程很主线程的问题，还有网络通信的保障问题，还有聊天模块的糟糕实现。总之，自己还有很多需要学习进步的地方。任重而道远。
